@@ -1,0 +1,52 @@
+server:
+  port: 8080
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://ryanklkinsella:m1Dc2BaSxx57Zz5F@rk-cluster.uxid81e.mongodb.net/?retryWrites=true&w=majority&appName=rk-cluster
+      username: ryanklkinsella
+      password: m1Dc2BaSxx57Zz5F
+
+csrf:
+  cors:
+    allowedOrigins:
+      - http://localhost:3000
+      - https://taylorandryankinsellawedding.cc
+
+---
+spring:
+  config:
+    activate.on-profile: dev
+  data:
+    mongodb:
+      database: wedding-dev
+
+springdoc:
+  profiles:
+    active: dev
+  api-docs:
+    path: /api-docs
+    groups:
+      enabled: true
+  swagger-ui:
+    tryItOutEnabled: true
+    operationsSorter: method
+    tagsSorter: alpha
+    filter: true
+    path: /swagger-ui.html
+    enabled: true
+---
+spring:
+  config:
+    activate.on-profile: prod
+  data:
+    mongodb:
+      database: wedding-prod
+
+springdoc:
+  profiles:
+    active: prod
+  swagger-ui:
+    enabled: false
+---
+
