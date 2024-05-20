@@ -21,6 +21,7 @@ RUN mkdir -p /app/application-properties \
 # Copy the built jar file from the build stage
 COPY --from=build /app/target/wedding-backend-v2.jar wedding-backend-v2.jar
 COPY src/main/resources/application.properties /app/application-properties/application.properties
+COPY src/main/resources/application.yml /app/application-properties/application.yml
 
 EXPOSE 8080
 
