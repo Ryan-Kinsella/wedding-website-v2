@@ -3,9 +3,9 @@ server:
 spring:
   data:
     mongodb:
-      uri: mongodb+srv://ryanklkinsella:m1Dc2BaSxx57Zz5F@rk-cluster.uxid81e.mongodb.net/?retryWrites=true&w=majority&appName=rk-cluster
+      uri: mongodb+srv://ryanklkinsella:${MONGO_PW}@rk-cluster.uxid81e.mongodb.net/?retryWrites=true&w=majority&appName=rk-cluster
       username: ryanklkinsella
-      password: m1Dc2BaSxx57Zz5F
+      password: ${MONGO_PW}
 
 csrf:
   cors:
