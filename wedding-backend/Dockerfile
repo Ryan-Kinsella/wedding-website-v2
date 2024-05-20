@@ -19,9 +19,9 @@ RUN mkdir -p /app/application-properties \
     && mkdir -p /app/logs
 
 # Copy the built jar file from the build stage
-COPY --from=build /app/target/wedding-0.0.1-SNAPSHOT.jar wedding-0.0.1-SNAPSHOT.jar
+COPY --from=build /app/target/wedding-backend-v2.jar wedding-backend-v2.jar
 COPY src/main/resources/application.properties /app/application-properties/application.properties
 
 EXPOSE 8080
 
-CMD ["java", "-Djava.net.preferIPv4Stack=true", "-Dspring.profiles.active=prod", "-Dspring.config.location=application-properties/", "-jar", "wedding-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-Djava.net.preferIPv4Stack=true", "-Dspring.profiles.active=prod", "-Dspring.config.location=application-properties/", "-jar", "wedding-backend-v2.jar"]
