@@ -12,6 +12,7 @@ csrf:
     allowedOrigins:
       - http://localhost:3000
       - https://taylorandryankinsellawedding.cc
+      - http://taylorandryankinsellawedding.cc
 
 
 ---

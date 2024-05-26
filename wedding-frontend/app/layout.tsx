@@ -24,10 +24,10 @@ export default function RootLayout({
             </head>
             <body className="spaceGrotesk.className">
                 <ThemeProvider
-                    attribute="class"
+                    // attribute="class"
                     defaultTheme="dark"
-                    enableSystem
-                    disableTransitionOnChange
+                    enableSystem={false}
+                // disableTransitionOnChange
                 >
                     {children}
                 </ThemeProvider>

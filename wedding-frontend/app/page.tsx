@@ -1,7 +1,5 @@
 import { motion } from "framer-motion";
 import React, { useState } from "react";
-import { AuroraBackground } from "@/components/ui/aurora-background";
-import { FloatingNav } from "@/components/ui/floating-navbar";
 import { Tabs } from "@/components/ui/tabs";
 import "@/components/my-components/reusable/custom-scrollbar.css";
 import csurf from 'csurf'
@@ -270,11 +268,11 @@ export default async function Home() {
         },
         {
             text: "Ryan",
-            className: "text-orange-100 dark:text-orange-200",
+            className: "text-orange-200",
         },
         {
             text: "Kinsella",
-            className: "text-orange-100 dark:text-orange-200",
+            className: "text-orange-200",
         },
     ];
     const countdownTypewritter = [
@@ -286,17 +284,15 @@ export default async function Home() {
         },
         {
             text: "September",
-            className: "text-orange-100 dark:text-orange-200",
+            className: "text-orange-200",
         },
         {
             text: "27th",
-            className: "text-orange-100 dark:text-orange-200",
+            className: "text-orange-200",
         },
         {
             text: "2025:",
-            className: "text-orange-200 dark:text-orange-300",
-
-            // className: "text-blue-500 dark:text-blue-500",
+            className: "text-orange-300",
         },
     ];
 
@@ -332,7 +328,7 @@ export default async function Home() {
                 </div>
                 {/* todo no more absolutes */}
                 <div className="absolute top-[3550px] right-6">
-                    <a className="pb-2 text-orange-200 underline hover:text-spotify" href="https://github.com/Ryan-Kinsella/wedding-website" target="_blank">Code</a>
+                    <a className="pb-2 text-orange-200 underline hover:text-spotify" href="https://github.com/Ryan-Kinsella/wedding-website-v2" target="_blank">Code</a>
                 </div>
             </div>
         </TracingBeam>

@@ -41,6 +41,15 @@ export const CountdownComponent = ({
     }, []);
 
     return (
+        // <div className="grid grid-rows-2 grid-cols-6 gap-4 w-full xl:w-1/2 mx-auto pt-[100px] select-none" id="countdownBody">
+        //     <div className="relative flex items-center justify-center transform hover:scale-125 transition-transform duration-300">
+        //         <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-orange-300 opacity-50 blur"></div>
+        //         <span className="relative z-10 text-xs md:text-sm">{countdown.years}</span>
+        //     </div>
+        //     <div className="relative flex items-center justify-center transform hover:scale-125 transition-transform duration-300">
+        //         <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-orange-300 opacity-50 blur"></div>
+        //         <span className="relative z-10 text-xs md:text-sm">{countdown.months}</span>
+        //     </div>
         <div className="grid grid-rows-2 grid-cols-6 gap-4 w-full xl:w-1/2 mx-auto pt-[100px] select-none" id="countdownBody">
             <div className="relative flex items-center justify-center transform hover:scale-125 transition-transform duration-300">
                 <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-orange-300 opacity-50 blur"></div>
@@ -93,5 +102,3 @@ export const CountdownComponent = ({
         </div>
     );
 }
-
-//export default CountdownComponent;
