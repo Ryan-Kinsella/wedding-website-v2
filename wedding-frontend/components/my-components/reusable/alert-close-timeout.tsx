@@ -8,16 +8,19 @@ import Collapse from '@mui/material/Collapse';
 import CloseIcon from '@mui/icons-material/Close';
 import Fade from '@mui/material/Fade';
 import CheckIcon from '@mui/icons-material/Check';
+import { SECONDARY_COLOR } from '@/utils/hex-colors-tailwind';
 
 
 export const AlertCloseTimeout = ({
     open,
     timeout,
-    text
+    text,
+    onClose,
 }: {
     open: boolean;
     timeout: number;
     text: string;
+    onClose: () => void; // useage in parent function: onClose={() => setAlertOpen(false)}
 }) => {
     let [alertOpen, setAlertOpen] = useState(false);
 
@@ -29,6 +32,7 @@ export const AlertCloseTimeout = ({
         if (timeout !== 0 && alertOpen) {
             const timeoutId = setTimeout(() => {
                 setAlertOpen(false);
+                onClose();
             }, timeout);
             // Cleanup function to clear the timeout when the component unmounts or `open` changes
             return () => {
@@ -46,23 +50,25 @@ export const AlertCloseTimeout = ({
                 <Collapse in={alertOpen}>
                     <Fade in={alertOpen}>
                         <Alert
-                            className="text-orange-200 bg-transparent border border-orange-200"
-                            icon={<CheckIcon fontSize="inherit" className='bg-[#1ED760] rounded-full text-orange-200' />}
+                            className="text-primary bg-transparent border border-primary"
+                            icon={<CheckIcon fontSize="inherit" className='bg-secondary rounded-full text-primary' />}
                             action={
                                 <IconButton
-                                    className='hover:bg-[#1ED760] opacity-85'
+                                    className='hover:bg-secondary opacity-85'
                                     aria-label="close"
                                     color="inherit"
                                     size="small"
                                     onClick={() => {
                                         setAlertOpen(false);
-                                        open = false;
+                                        onClose(); // Call the callback function
+                                        // open = false;
+
                                     }}
                                 >
                                     <CloseIcon fontSize="inherit" />
                                 </IconButton>
                             }
-                            sx={{ mb: 2, bgcolor: "#1ED760" }}
+                            sx={{ mb: 2, bgcolor: `${SECONDARY_COLOR}` }}
                         >
                             {text}
                         </Alert>

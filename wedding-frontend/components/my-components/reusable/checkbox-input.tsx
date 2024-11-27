@@ -29,7 +29,7 @@ export const CheckboxInput = ({
             {
                 !isChecked ?
                     (
-                        <div className="w-full h-full cursor-pointer border rounded-lg px-4 py-2 hover:text-spotify hover:border-orange-200 select-none"
+                        <div className="w-full h-full cursor-pointer border  rounded-lg px-4 py-2 hover:text-secondary hover:border-primary select-none"
                             onClick={toggleCheckbox}
                         >
                             {text}
@@ -39,11 +39,11 @@ export const CheckboxInput = ({
                     (
                         <div className="w-full h-full relative">
 
-                            <div className="w-full h-full cursor-pointer border rounded-lg px-4 py-2 hover:text-white hover:border-orange-200 select-none"
+                            <div className="w-full h-full cursor-pointer border rounded-lg px-4 py-2  hover:border-primary select-none"
                                 onClick={toggleCheckbox}
                             >
                                 {clickedText}
-                                <div className="w-full h-full absolute inset-0 bg-gradient-to-br from-orange-200 to-spotify opacity-50 blur"></div>
+                                <div className="w-full h-full absolute inset-0 bg-gradient-to-br from-primary to-secondary opacity-50 blur"></div>
 
                             </div>
                         </div>

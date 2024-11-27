@@ -1,0 +1,28 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "mongodb"
+    url      = env("DATABASE_URL")
+}
+
+model Rsvp {
+    id                String  @id @default(auto()) @map("_id") @db.ObjectId
+    //    rsvpId            String
+    primaryName       String
+    primaryVegetarian Boolean @default(false)
+    primaryGlutenFree Boolean @default(false)
+    primaryAllergies  String?
+    partnerName       String?
+    partnerVegetarian Boolean @default(false)
+    partnerGlutenFree Boolean @default(false)
+    partnerAllergies  String?
+}
+
+model SpotifySuggestion {
+    id         String @id @default(auto()) @map("_id") @db.ObjectId
+    //    spotifySuggestionId String
+    songName   String
+    artistName String
+}

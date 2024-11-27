@@ -1,6 +1,6 @@
 "use server";
 
-import { RSVP } from "../../auto-generated-stubs/Api";
+import { Rsvp } from "@prisma/client";
 
 export const addRsvpServer = async (
     primaryFullName: string,
@@ -12,11 +12,19 @@ export const addRsvpServer = async (
     partnerGlutenFree: boolean,
     partnerAllergies: string
 
-): Promise<RSVP> => {
-    const errorRsvp: RSVP = {
-        'rsvpId': "-1",
+): Promise<Rsvp> => {
+    const errorRsvp: Rsvp = {
+        id: "-1",
+        primaryName: "",
+        primaryVegetarian: false,
+        primaryGlutenFree: false,
+        primaryAllergies: null,
+        partnerName: null,
+        partnerVegetarian: false,
+        partnerGlutenFree: false,
+        partnerAllergies: null
     };
-    const url = process.env.NEXT_PUBLIC_BACKEND_URL + '/api/rsvp';
+    const url = process.env.NEXT_PUBLIC_BACKEND_URL + '/api/rsvp'; // 
     const apiResponse = await fetch(url, {
         method: 'POST',
         headers: {
@@ -34,7 +42,7 @@ export const addRsvpServer = async (
         }),
     })
         .then(async response => {
-            const jsonObject: RSVP = await response.json();
+            const jsonObject: Rsvp = await response.json();
             return jsonObject;
         })
         .catch(error => {

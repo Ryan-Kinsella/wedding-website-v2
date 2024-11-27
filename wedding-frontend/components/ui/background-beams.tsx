@@ -112,10 +112,10 @@ export const BackgroundBeams = React.memo(
                                     delay: Math.random() * 10,
                                 }}
                             >
-                                <stop stopColor="var(--orange-300)" stopOpacity="0"></stop>
-                                <stop stopColor="var(--orange-300)"></stop>
-                                <stop offset="32.5%" stopColor="var(--orange-300)"></stop>
-                                <stop offset="100%" stopColor="var(--orange-300)" stopOpacity="0"></stop>
+                                <stop stopColor="var(--primary)" stopOpacity="0"></stop>
+                                <stop stopColor="var(--primary)"></stop>
+                                <stop offset="32.5%" stopColor="var(--primary)"></stop>
+                                <stop offset="100%" stopColor="var(--primary)" stopOpacity="0"></stop>
                             </motion.linearGradient>
                         ))}
 
@@ -127,9 +127,9 @@ export const BackgroundBeams = React.memo(
                             gradientUnits="userSpaceOnUse"
                             gradientTransform="translate(352 34) rotate(90) scale(555 1560.62)"
                         >
-                            <stop offset="0.0666667" stopColor="var(--orange-300)"></stop>
-                            <stop offset="0.243243" stopColor="var(--orange-300)"></stop>
-                            <stop offset="0.43594" stopColor="var(--orange-300)" stopOpacity="0"></stop>
+                            <stop offset="0.0666667" stopColor="var(--primary)"></stop>
+                            <stop offset="0.243243" stopColor="var(--primary)"></stop>
+                            <stop offset="0.43594" stopColor="var(--primary)" stopOpacity="0"></stop>
                         </radialGradient>
                     </defs>
                 </svg>

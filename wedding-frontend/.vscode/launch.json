@@ -1,0 +1,35 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "server-side",
+            "type": "node-terminal",
+            "request": "launch",
+            "command": "pnpm dev",
+            "env": {
+                "PORT": "3000",
+            },
+        },
+        {
+            "name": "full stack",
+            "type": "node-terminal",
+            "request": "launch",
+            "command": "pnpm dev",
+            "env": {
+                "PORT": "3000",
+                "NODE_ORACLEDB_AZURE_AUTH": "false",
+            },
+            "serverReadyAction": {
+                "pattern": "- Local:.+(https?://.+)",
+                "uriFormat": "%s",
+                "action": "debugWithChrome",
+            },
+        },
+        {
+            "name": "client-side",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:8081",
+        },
+    ]
+}

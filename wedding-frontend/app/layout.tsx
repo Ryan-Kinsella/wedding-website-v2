@@ -7,8 +7,13 @@ const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
 
 const description = "Get ready to celebrate some love!";
 
+const url = process.env.NODE_ENV === 'production' ?
+    `${process.env.WEBPAGE_PROD_URL}` :
+    'http://localhost:3000';
+
 export const metadata: Metadata = {
-    title: "Taylor and Ryan's Wedding",
+    metadataBase: new URL(url),
+    title: "Taylor & Ryan",
     description: description,
     openGraph: {
         description: description,
@@ -25,10 +30,11 @@ export default function RootLayout({
         <html lang="en" suppressHydrationWarning>
             <head>
                 <title>Taylor & Ryan</title>
-                <meta name="_csrf" content="${_csrf.token}" />
-                <meta name="_csrf_header" content="${_csrf.headerName}" />
+                {/* <meta name="_csrf" content="${_csrf.token}" /> */}
+                {/* <meta name="_csrf_header" content="${_csrf.headerName}" /> */}
+                <meta property="og:image" content={`${url}/og-image.png`} />
             </head>
-            <body className="spaceGrotesk.className">
+            <body>
                 <ThemeProvider
                     // attribute="class"
                     defaultTheme="dark"
@@ -37,6 +43,7 @@ export default function RootLayout({
                 >
                     {children}
                 </ThemeProvider>
+
             </body>
         </html>
     )

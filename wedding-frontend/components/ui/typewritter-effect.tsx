@@ -55,7 +55,7 @@ export const TypewriterEffect = ({
                                     initial={{}}
                                     key={`char-${index}`}
                                     className={cn(
-                                        `text-white opacity-0 hidden`,
+                                        ` opacity-0 hidden`,
                                         word.className
                                     )}
                                 >
@@ -90,7 +90,7 @@ export const TypewriterEffect = ({
                     repeatType: "reverse",
                 }}
                 className={cn(
-                    "inline-block rounded-sm w-[4px] h-4 md:h-6 lg:h-10 bg-orange-200",
+                    "inline-block rounded-sm w-[4px] h-4 md:h-6 lg:h-10 bg-primary",
                     cursorClassName
                 )}
             ></motion.span>
@@ -126,7 +126,7 @@ export const TypewriterEffectSmooth = ({
                             {word.text.map((char, index) => (
                                 <span
                                     key={`char-${index}`}
-                                    className={cn(`text-white `, word.className)}
+                                    className={cn(``, word.className)}
                                 >
                                     {char}
                                 </span>
@@ -156,7 +156,7 @@ export const TypewriterEffectSmooth = ({
                 }}
             >
                 <div
-                    className="text-xs sm:text-base md:text-xl lg:text:3xl xl:text-5xl font-bold"
+                    className="text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold"
                     style={{
                         whiteSpace: "nowrap",
                     }}
@@ -178,7 +178,7 @@ export const TypewriterEffectSmooth = ({
                     repeatType: "reverse",
                 }}
                 className={cn(
-                    "block rounded-sm w-[4px]  h-4 sm:h-6 xl:h-12 bg-orange-200",
+                    "block rounded-sm w-[4px] mb-2 bg-primary",
                     cursorClassName
                 )}
             ></motion.span>

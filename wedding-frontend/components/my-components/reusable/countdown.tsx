@@ -25,7 +25,7 @@ export const CountdownComponent = ({
     });
     useEffect(() => {
         const fetchCountdown = async () => {
-            const url = process.env.NEXT_PUBLIC_BACKEND_URL + '/countdown';
+            const url = process.env.NEXT_PUBLIC_BACKEND_URL + '/api/countdown'; //
             try {
                 const response = await fetch(url);
                 const jsonObject: Countdown = await response.json();
@@ -40,65 +40,69 @@ export const CountdownComponent = ({
         return () => clearInterval(intervalId);
     }, []);
 
+    const mainDiv = "relative flex items-center justify-center transform hover:scale-125 transition-transform duration-300"
+    const divBackground = "absolute inset-0 bg-gradient-to-br from-primary to-primary-foreground opacity-50 blur"
+    const spanClassName = "relative z-10 text-xs"
+    // md:text-sm
+    // md:gap-x-20
     return (
-        // <div className="grid grid-rows-2 grid-cols-6 gap-4 w-full xl:w-1/2 mx-auto pt-[100px] select-none" id="countdownBody">
-        //     <div className="relative flex items-center justify-center transform hover:scale-125 transition-transform duration-300">
-        //         <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-orange-300 opacity-50 blur"></div>
-        //         <span className="relative z-10 text-xs md:text-sm">{countdown.years}</span>
-        //     </div>
-        //     <div className="relative flex items-center justify-center transform hover:scale-125 transition-transform duration-300">
-        //         <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-orange-300 opacity-50 blur"></div>
-        //         <span className="relative z-10 text-xs md:text-sm">{countdown.months}</span>
-        //     </div>
-        <div className="grid grid-rows-2 grid-cols-6 gap-4 w-full xl:w-1/2 mx-auto pt-[100px] select-none" id="countdownBody">
-            <div className="relative flex items-center justify-center transform hover:scale-125 transition-transform duration-300">
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-orange-300 opacity-50 blur"></div>
-                <span className="relative z-10 text-xs md:text-sm">{countdown.years}</span>
+        <div>
+            <div className='text-3xl text-foreground text-center pt-4'>
+                September 27th, 2025
             </div>
-            <div className="relative flex items-center justify-center transform hover:scale-125 transition-transform duration-300">
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-orange-300 opacity-50 blur"></div>
-                <span className="relative z-10 text-xs md:text-sm">{countdown.months}</span>
-            </div>
-            <div className="relative flex items-center justify-center transform hover:scale-125 transition-transform duration-300">
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-orange-300 opacity-50 blur"></div>
-                <span className="relative z-10 text-xs md:text-sm">{countdown.days}</span>
-            </div>
-            <div className="relative flex items-center justify-center transform hover:scale-125 transition-transform duration-300">
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-orange-300 opacity-50 blur"></div>
-                <span className="relative z-10 text-xs md:text-sm">{countdown.hours}</span>
-            </div>
-            <div className="relative flex items-center justify-center transform hover:scale-125 transition-transform duration-300">
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-orange-300 opacity-50 blur"></div>
-                <span className="relative z-10 text-xs md:text-sm">{countdown.minutes}</span>
-            </div>
-            <div className="relative flex items-center justify-center transform hover:scale-125 transition-transform duration-300">
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-orange-300 opacity-50 blur"></div>
-                <span className="relative z-10 text-xs md:text-sm">{countdown.seconds}</span>
-            </div>
-            <div className="relative flex items-center justify-center transform hover:scale-125 transition-transform duration-300">
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-orange-300 opacity-50 blur"></div>
-                <span className="relative z-10 text-xs md:text-sm">Years</span>
-            </div>
-            <div className="relative flex items-center justify-center transform hover:scale-125 transition-transform duration-300">
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-orange-300 opacity-50 blur"></div>
-                <span className="relative z-10 text-xs md:text-sm">Months</span>
-            </div>
-            <div className="relative flex items-center justify-center transform hover:scale-125 transition-transform duration-300">
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-orange-300 opacity-50 blur"></div>
-                <span className="relative z-10 text-xs md:text-sm">Days</span>
-            </div>
-            <div className="relative flex items-center justify-center transform hover:scale-125 transition-transform duration-300">
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-orange-300 opacity-50 blur"></div>
-                <span className="relative z-10 text-xs md:text-sm">Hours</span>
-            </div>
-            <div className="relative flex items-center justify-center transform hover:scale-125 transition-transform duration-300">
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-orange-300 opacity-50 blur"></div>
-                <span className="relative z-10 text-xs md:text-sm">Minutes</span>
-            </div>
-            <div className="relative flex items-center justify-center transform hover:scale-125 transition-transform duration-300">
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-orange-300 opacity-50 blur"></div>
-                <span className="relative z-10 text-xs md:text-sm">Seconds</span>
+            <div className="grid grid-rows-2 grid-cols-6 gap-x-12 gap-y-4 w-full mx-auto pt-10
+          font-semibold select-none text-muted-foreground " id="countdownBody">
+
+                <div className={mainDiv}>
+                    <div className={divBackground}></div>
+                    <span className={spanClassName}>{countdown.years}</span>
+                </div>
+                <div className={mainDiv}>
+                    <div className={divBackground}></div>
+                    <span className={spanClassName}>{countdown.months}</span>
+                </div>
+                <div className={mainDiv}>
+                    <div className={divBackground}></div>
+                    <span className={spanClassName}>{countdown.days}</span>
+                </div>
+                <div className={mainDiv}>
+                    <div className={divBackground}></div>
+                    <span className={spanClassName}>{countdown.hours}</span>
+                </div>
+                <div className={mainDiv}>
+                    <div className={divBackground}></div>
+                    <span className={spanClassName}>{countdown.minutes}</span>
+                </div>
+                <div className={mainDiv}>
+                    <div className={divBackground}></div>
+                    <span className={spanClassName}>{countdown.seconds}</span>
+                </div>
+                <div className={mainDiv}>
+                    <div className={divBackground}></div>
+                    <span className={spanClassName}>Years</span>
+                </div>
+                <div className={mainDiv}>
+                    <div className={divBackground}></div>
+                    <span className={spanClassName}>Months</span>
+                </div>
+                <div className={mainDiv}>
+                    <div className={divBackground}></div>
+                    <span className={spanClassName}>Days</span>
+                </div>
+                <div className={mainDiv}>
+                    <div className={divBackground}></div>
+                    <span className={spanClassName}>Hours</span>
+                </div>
+                <div className={mainDiv}>
+                    <div className={divBackground}></div>
+                    <span className={spanClassName}>Minutes</span>
+                </div>
+                <div className={mainDiv}>
+                    <div className={divBackground}></div>
+                    <span className={spanClassName}>Seconds</span>
+                </div>
             </div>
         </div>
+
     );
 }

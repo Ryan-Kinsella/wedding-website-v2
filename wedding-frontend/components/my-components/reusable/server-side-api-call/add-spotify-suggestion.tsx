@@ -1,5 +1,6 @@
 'use server';
-import { SpotifySuggestion } from "../../auto-generated-stubs/Api";
+
+import { SpotifySuggestion } from "@prisma/client";
 
 // required for cors to work.
 
@@ -7,10 +8,12 @@ export const addSpotifySuggestionServer =
     async (songNameInput: string, artistNameInput: string,)
         : Promise<SpotifySuggestion> => {
         const errorSpotifySuggestion: SpotifySuggestion = {
-            'spotifySuggestionId': "-1"
+            id: "-1",
+            songName: "",
+            artistName: ""
         };
 
-        const url = process.env.NEXT_PUBLIC_BACKEND_URL + '/api/spotify-suggestion';
+        const url = process.env.NEXT_PUBLIC_BACKEND_URL + '/api/spotify-suggestion'; ''
         const apiResponse = await fetch(url, {
             method: 'POST',
             headers: {

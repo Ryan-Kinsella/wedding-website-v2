@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useRef } from "react";
 import { useEffect, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import type { Container, SingleOrMultiple } from "@tsparticles/engine";
@@ -50,6 +50,17 @@ export const SparklesCore = (props: ParticlesProps) => {
             });
         }
     };
+
+    const rootRef = useRef<HTMLDivElement>(null);
+    const [cardColor, setCardColor] = useState('');
+
+    useEffect(() => {
+        if (rootRef.current) {
+            const cardValue = getComputedStyle(rootRef.current).getPropertyValue('--card');
+            // Process cardValue as needed (e.g., convert to hex)
+            setCardColor(cardValue);
+        }
+    }, []);
 
     return (
         <motion.div animate={controls} className={cn("opacity-0", className)}>
@@ -122,7 +133,12 @@ export const SparklesCore = (props: ParticlesProps) => {
                                 },
                             },
                             color: {
-                                value: particleColor || "#ffffff",
+                                value: { // todo way to not have this hard coded.
+                                    h: 196,
+                                    s: 19,
+                                    l: 64,
+                                },
+                                // value: particleColor || "#ffffff",
                                 animation: {
                                     h: {
                                         count: 0,

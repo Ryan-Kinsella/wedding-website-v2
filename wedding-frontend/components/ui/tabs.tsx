@@ -4,6 +4,13 @@ import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/utils/cn";
 import { SparklesCore } from "./sparkles";
+import { PRIMARY_COLOR, SECONDARY_COLOR } from "@/utils/hex-colors-tailwind";
+import scrollIntoView from 'scroll-into-view';
+
+// import from '@/tailwind.config';
+
+
+// export const SPOTIFY_COLOR = theme.colors.spotify;
 
 type Tab = {
     title: string;
@@ -27,19 +34,76 @@ export const Tabs = ({
     const [active, setActive] = useState<Tab>(propTabs[0]);
     const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
+    // const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const userAgent = typeof window !== 'undefined' ? navigator.userAgent : '';
+        setIsMobile(/iPhone|iPad|iPod|Android/i.test(userAgent));
+    }, []);
+
     const handleTabClick = (tab: Tab, index: number) => {
         setActive(tab);
-        tabRefs.current[index]?.scrollIntoView({
-            behavior: 'smooth',
-            inline: 'center'
-        });
+        if (isMobile) {
+            // tabRefs.current[index]?.scrollIntoView({
+            //     behavior: 'smooth',
+            //     block: 'nearest',
+
+            //     inline: 'center',
+            // });
+            const tabElement = tabRefs.current[index];
+            if (tabElement) {
+                // const scrollPosition: number = tabElement.offsetLeft + (tabElement.offsetWidth / 2) - (window.innerWidth / 2);
+                // window.scrollTo({
+                //     left: scrollPosition,
+                //     behavior: 'smooth',
+                // });
+                scrollIntoView(tabElement, {
+                    align: {
+                        top: 0,
+                        left: 0.3,
+                    },
+                    time: 800,
+                    // ease: 'smooth',
+                });
+            }
+
+        } else {
+            tabRefs.current[index]?.scrollIntoView({
+                behavior: 'smooth',
+                inline: 'center'
+            });
+        }
     };
+
+    // const handleTabClick = (tab: Tab, index: number) => {
+    //     setActive(tab);
+    //     const element = tabRefs.current[index];
+    //     const scrollPosition = element?.offsetLeft ? + (element.offsetWidth / 2) - (window.innerWidth / 2) : 0;
+    //     window.scrollTo({
+    //         left: scrollPosition + 200,
+    //         behavior: 'smooth'
+    //     });
+    // };
+
+    // const handleTabClick = (tab: Tab, index: number) => {
+    //     setActive(tab);
+    //     const container = document.querySelector('.your-container-class');
+    //     const element = tabRefs.current[index];
+    //     const scrollPosition = element?.offsetLeft? + (element?.offsetWidth? / 2) - (container?.offsetWidth / 2);
+    //     container.scrollLeft = scrollPosition;
+    //     // Add smooth scrolling using requestAnimationFrame or a library like jQuery
+    // };
+
+    const particleColor1 = 'secondary';
+    const particleColor2 = 'orange-500';
 
     return (
         <>
             <div
                 className={cn(
-                    "flex flex-row items-center justify-start sm:justify-center overflow-x-auto no-visible-scrollbar w-full",
+                    //overflow-x-auto 
+                    "flex flex-row items-center justify-start lg:justify-center overflow-x-hidden no-visible-scrollbar",
                     containerClassName
                 )}
             >
@@ -58,32 +122,30 @@ export const Tabs = ({
                         {active === tab && (
                             <motion.div
                                 layoutId="clickedbutton"
-                                transition={{ type: "spring", bounce: 0.1, duration: 0.6 }}
+                                // note that bounce actually extends the width, so be careful adding to bounce.
+                                transition={{ type: "spring", bounce: 0.1, duration: 1.0 }}
                                 className={cn(
-                                    "absolute inset-0 bg-zinc-800 rounded-full ",
+                                    `absolute inset-0 bg-secondary rounded-full`,
                                     activeTabClassName
                                 )}
                             />
                         )}
 
-                        <span className="relative block text-white">
+                        <span className="relative block">
                             {tab.title}
                         </span>
                     </button>
                 ))}
             </div>
-            <div className="w-full h-20 relative mx-auto">
-                <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-orange-100 to-transparent h-[2px] w-3/4 blur-sm" />
-                <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-orange-100 to-transparent h-px w-3/4" />
-                <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-orange-300 to-transparent h-[5px] w-1/4 blur-sm" />
-                <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-orange-300 to-transparent h-px w-1/4" />
+            <div className="w-full h-20 relative mx-auto ">
+                <div className={`absolute inset-0 bg-gradient-to-r from-primary via-primary to-primary h-[1px] w-full blur-sm`} />
                 <SparklesCore
                     background="transparent"
                     minSize={0.4}
                     maxSize={1}
                     particleDensity={1200}
                     className="w-full h-full"
-                    particleColor="#FFFFFF"
+                    particleColor={`${PRIMARY_COLOR}`}
                 />
                 <div className="absolute inset-0 w-full h-full bg-background [mask-image:radial-gradient(350px_200px_at_top,transparent_20%,white)]"></div>
             </div>
@@ -116,7 +178,7 @@ export const FadeInDiv = ({
                         opacity: tab === active ? 1 : 0,
                     }}
                     className={cn("w-full h-full absolute top-0 left-0", className)}
-                    transition={{ duration: 0.5 }}
+                    transition={{ duration: 1.0 }}
                     animate={{ opacity: tab === active ? 1 : 0, scale: tab === active ? 1 : 0 }}
                 >
                     {tab.content}
