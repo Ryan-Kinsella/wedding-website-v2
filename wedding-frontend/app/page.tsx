@@ -207,8 +207,8 @@ export default async function Home() {
                 <div className={tabContentClass} id="venue">
                     <p className="p-4 pt-4 text-2xl md:text-4xl">Venue</p>
                     <a className="p-2 pt-3 text-2xl md:text-3xl underline hover:text-secondary" href="https://stevensonfarms.com" target="_blank">Stevenson Farms</a>
-                    <p className="p-2">5923 County Road 15 Alliston, ON. Canada</p>
-                    <p className="p-2">Park anywhere!</p>
+                    <p className="p-2 font-light">5923 County Road 15 Alliston, ON. Canada</p>
+                    <p className="p-2 font-light">Park anywhere!</p>
 
                     <ImagesSlider className="h-full w-full" images={imagesSlider}>
                         <div>
@@ -219,10 +219,6 @@ export default async function Home() {
                         href="https://www.tripadvisor.ca/Hotel_Review-g182201-d1469258-Reviews-Stevenson_Inn_Spa-Alliston_New_Tecumseth_Ontario.html#/media/1469258/?albumid=101&type=0&category=101" target="_blank">
                         More pictures
                     </a>
-
-
-
-
                 </div>
             ),
         },
@@ -246,7 +242,7 @@ export default async function Home() {
             content: (
                 <div className={tabContentClass}>
                     <p className="p-4 text-xl md:text-4xl">Accomodations</p>
-                    <p className="p-4">
+                    <p className="p-4 font-light">
                         We have arranged a few options for accommodations.
                         Whatever you choose, we are happy to have you celebrate with us!
                         Please let us know if you have any questions.
@@ -271,7 +267,7 @@ export default async function Home() {
             content: (
                 <div className={tabContentClass}>
                     <p className="p-4 text-xl md:text-4xl">Gifts</p>
-                    <p className="p-4">
+                    <p className="p-4 font-light">
                         The only thing we can ask for is for you to celebrate our special day with us!
                         While we have everything we need, if you feel the need to bring a gift, contributions towards our home fund would be very much appreciated.
 

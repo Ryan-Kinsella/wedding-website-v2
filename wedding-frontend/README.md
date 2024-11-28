@@ -1,3 +1,14 @@
+### Dev
+
+If the modules ever fail, can do a full reset by doing 
+
+```
+rm -rf node_modules pnpm-lock.yaml
+pnpm install
+npx prisma migrate dev --name init
+npx prisma generate
+```
+
 ### Todo
 
 - [x] Fancy font for Taylor and Ryan
@@ -15,7 +26,7 @@
 - [x] next js tailwindcss "hsl(var(--primary))" to hexcode
 - [x] convert secondary to primary
 - [x] convert success to secondary
-- [ ] photos tab not displaying all pictures on mobile
+- [x] photos tab not displaying all pictures on mobile
 - [x] picture of the venue using imageslider
 - [x] small horizontal scrollbar again after image slider
 - [x] bug adding to music recomendations more than once, popup only appears once.
