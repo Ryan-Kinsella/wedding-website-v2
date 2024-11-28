@@ -24,11 +24,11 @@ export const RsvpComponent = ({
     const [partnerVegetarian, setPartnerVegetarian] = useState(false);
     const [partnerGlutenFree, setPartnerGlutenFree] = useState(false);
     const [alertTimeout, setAlertTimeout] = useState(0);
-    const [open, setOpen] = useState(false);
+    const [alertOpen, setAlertOpen] = useState(false);
 
     const handleOpenAlert = () => {
-        setOpen(false);
-        setOpen(true);
+        setAlertOpen(false);
+        setAlertOpen(true);
     };
 
     const addRsvp = async () => {
@@ -102,7 +102,7 @@ export const RsvpComponent = ({
                 </div>
                 <div className="p-3 w-3/4 md:w-1/2">
                     <TextInput
-                        name="Allergies or other dietary restrictions?"
+                        name="Partner dietary restrictions?"
                         textValue={partnerAllergies}
                         onTextChange={(e) => setPartnerAllergies(e)}
                     ></TextInput>
@@ -114,7 +114,12 @@ export const RsvpComponent = ({
                     ></SpotifyButton>
                 </div>
                 <div className="p-6 sm:p-12">
-                    <AlertCloseTimeout open={open} timeout={alertTimeout} text="Thanks for the RSVP! Head over to the Music Recommendations tab and add some songs you wanna dance to 💃 🕺" />
+                    <AlertCloseTimeout
+                        open={alertOpen}
+                        timeout={alertTimeout}
+                        text="Thanks for the RSVP! Head over to the Music Recommendations tab and add some songs you wanna dance to 💃 🕺"
+                        onClose={() => setAlertOpen(false)}
+                    />
                 </div>
             </div>
         </div>

@@ -11,7 +11,7 @@ export const HoverEffect = ({
     items: SpotifySuggestion[] | null;
     className?: string;
 }) => {
-    let [hoveredIndex, setHoveredIndex] = useState<number | null>(null); // todo
+    let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
     return (
         <div
@@ -28,6 +28,7 @@ export const HoverEffect = ({
                             className="w-inherit h-inherit"
                             onMouseEnter={() => setHoveredIndex(idx)}
                             onMouseLeave={() => setHoveredIndex(null)}
+                            key={idx}
                         >
                             <AnimatePresence>
                                 {hoveredIndex === idx && (
@@ -47,11 +48,12 @@ export const HoverEffect = ({
                                         <Image
                                             src={'/images/gus4.jpeg'}
                                             className="w-full h-full object-cover rounded-2xl"
-                                            key={3}
-                                            alt="thumbnail"
+                                            alt={`Image ${idx}`}
+                                            key={idx}
                                             loading="lazy"
                                             width={400}
                                             height={400}
+
                                         />
                                     </motion.span>
                                 )}
@@ -62,11 +64,8 @@ export const HoverEffect = ({
                             </Card>
 
                         </div>
-
                     ))
-
             }
-
         </div>
     );
 };
@@ -93,12 +92,12 @@ export const Card = ({
             )}
         >
             <motion.div className="h-full w-full"
-                initial={{ backgroundColor: 'transparent' }}
-                animate={isActive ? { backgroundColor: '#a5ced5' } : { backgroundColor: 'transparent' }}
+                initial={{ backgroundColor: 'rgba(0, 0, 0, 0)' }}
+                animate={isActive ? { backgroundColor: '#a5ced5' } : { backgroundColor: 'rgba(0, 0, 0, 0)' }}
                 transition={{
                     delay: 0.1,
-                    // duration: 0.2,
-                    // ease: "easeInOut",
+                    duration: 0.2,
+                    ease: "easeInOut",
                 }}
                 onClick={handleClick}
             >
@@ -119,9 +118,9 @@ export const CardTitle = ({
     children: React.ReactNode;
 }) => {
     return (
-        <h4 className={cn("text-secondary-foreground font-bold tracking-wide mt-4", className)}>
+        <p className={cn("text-secondary-foreground font-bold tracking-wide mt-4", className)}>
             {children}
-        </h4>
+        </p>
     );
 };
 export const CardDescription = ({

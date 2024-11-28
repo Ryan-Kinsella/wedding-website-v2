@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, Suspense } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/utils/cn";
 import { SparklesCore } from "./sparkles";
@@ -76,28 +76,6 @@ export const Tabs = ({
         }
     };
 
-    // const handleTabClick = (tab: Tab, index: number) => {
-    //     setActive(tab);
-    //     const element = tabRefs.current[index];
-    //     const scrollPosition = element?.offsetLeft ? + (element.offsetWidth / 2) - (window.innerWidth / 2) : 0;
-    //     window.scrollTo({
-    //         left: scrollPosition + 200,
-    //         behavior: 'smooth'
-    //     });
-    // };
-
-    // const handleTabClick = (tab: Tab, index: number) => {
-    //     setActive(tab);
-    //     const container = document.querySelector('.your-container-class');
-    //     const element = tabRefs.current[index];
-    //     const scrollPosition = element?.offsetLeft? + (element?.offsetWidth? / 2) - (container?.offsetWidth / 2);
-    //     container.scrollLeft = scrollPosition;
-    //     // Add smooth scrolling using requestAnimationFrame or a library like jQuery
-    // };
-
-    const particleColor1 = 'secondary';
-    const particleColor2 = 'orange-500';
-
     return (
         <>
             <div
@@ -170,20 +148,32 @@ export const FadeInDiv = ({
     return (
         <div className="relative w-full h-full">
             {tabs.map((tab) => (
-                <motion.div
-                    key={tab.value}
-                    layoutId={tab.value}
-                    style={{
-                        scale: tab === active ? 1 : 0,
-                        opacity: tab === active ? 1 : 0,
-                    }}
-                    className={cn("w-full h-full absolute top-0 left-0", className)}
-                    transition={{ duration: 1.0 }}
-                    animate={{ opacity: tab === active ? 1 : 0, scale: tab === active ? 1 : 0 }}
-                >
-                    {tab.content}
-                </motion.div>
+                <Suspense key={tab.value} fallback={<div>Loading...</div>}>
+                    <TabContent tab={tab} isActive={tab === active} className={className} />
+                </Suspense>
             ))}
         </div>
+    );
+};
+
+// Purpose: used in Suspense (FadeInDiv) to lazy load tab data.
+export const TabContent = ({ tab, isActive, className }: {
+    tab: Tab;
+    isActive: boolean;
+    className?: string
+}) => {
+    return (
+        <motion.div
+            layoutId={tab.value}
+            style={{
+                scale: isActive ? 1 : 0,
+                opacity: isActive ? 1 : 0,
+            }}
+            className={cn("w-full h-full absolute top-0 left-0", className)}
+            transition={{ duration: 1.0 }}
+            animate={{ opacity: isActive ? 1 : 0, scale: isActive ? 1 : 0 }}
+        >
+            {tab.content}
+        </motion.div>
     );
 };

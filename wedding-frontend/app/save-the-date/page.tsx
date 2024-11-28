@@ -1,6 +1,4 @@
-import { ImagesSlider } from "@/components/ui/image-slider";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { SaveTheDateImageBackground } from "@/components/my-components/save-the-date/save-the-date-image-background";
 import { Great_Vibes, Playfair_Display } from "next/font/google";
 import { TypewriterEffectSmooth } from "@/components/ui/typewritter-effect";

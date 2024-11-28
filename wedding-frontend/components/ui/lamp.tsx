@@ -104,7 +104,7 @@ export const Dove = ({
                 <Image
                     src={'/images/png-dove-1.png'}
                     className="w-full h-full object-cover"
-                    alt="thumbnail"
+                    alt="dove"
                     loading="lazy"
                     width={400}
                     height={400}

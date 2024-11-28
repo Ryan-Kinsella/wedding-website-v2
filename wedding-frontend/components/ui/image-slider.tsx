@@ -35,23 +35,7 @@ export const ImagesSlider = ({
     const [loading, setLoading] = useState(false);
     const [loadedImages, setLoadedImages] = useState<string[]>([]);
 
-    const handleNext = () => {
-        setCurrentIndex((prevIndex) =>
-            prevIndex + 1 === images.length ? 0 : prevIndex + 1
-        );
-    };
-
-    const handlePrevious = () => {
-        setCurrentIndex((prevIndex) =>
-            prevIndex - 1 < 0 ? images.length - 1 : prevIndex - 1
-        );
-    };
-
     useEffect(() => {
-        loadImages();
-    }, []);
-
-    const loadImages = () => {
         setLoading(true);
         const loadPromises = images.map((image) => {
             return new Promise((resolve, reject) => {
@@ -68,13 +52,14 @@ export const ImagesSlider = ({
                 setLoading(false);
             })
             .catch((error) => console.error("Failed to load images", error));
-    };
+    }, [images]);
+
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
             if (event.key === "ArrowRight") {
-                handleNext();
+                setCurrentIndex((prevIndex) => prevIndex + 1 === images.length ? 0 : prevIndex + 1); // handleNext
             } else if (event.key === "ArrowLeft") {
-                handlePrevious();
+                setCurrentIndex((prevIndex) => prevIndex - 1 < 0 ? images.length - 1 : prevIndex - 1); // handlePrevious
             }
         };
 
@@ -84,7 +69,7 @@ export const ImagesSlider = ({
         let interval: any;
         if (autoplay) {
             interval = setInterval(() => {
-                handleNext();
+                setCurrentIndex((prevIndex) => prevIndex + 1 === images.length ? 0 : prevIndex + 1); // handleNext
             }, 6000); // in ms
         }
 
@@ -92,7 +77,7 @@ export const ImagesSlider = ({
             window.removeEventListener("keydown", handleKeyDown);
             clearInterval(interval);
         };
-    }, []);
+    }, [autoplay, images.length]);
 
     const slideVariants = {
         initial: {
@@ -173,6 +158,7 @@ export const ImagesSlider = ({
                         exit={direction === "up" ? "upExit" : "downExit"}
                         variants={slideVariants}
                         className="image h-full w-full absolute inset-0 object-cover object-center"
+                        alt={`Image ${direction}`}
                     />
                 </AnimatePresence>
             )}

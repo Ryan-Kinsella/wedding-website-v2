@@ -49,7 +49,7 @@ export const ParallaxScroll = ({
                             <Image
                                 src={el}
                                 className={classNameImg}
-                                alt="thumbnail"
+                                alt={`Image ${idx}`}
                                 loading="lazy"
                                 width={400}
                                 height={1000}
@@ -68,7 +68,7 @@ export const ParallaxScroll = ({
                             <Image
                                 src={el}
                                 className={classNameImg}
-                                alt="thumbnail"
+                                alt={`Image ${idx}`}
                                 loading="lazy"
                                 width={400}
                                 height={400}
@@ -87,7 +87,7 @@ export const ParallaxScroll = ({
                             <Image
                                 src={el}
                                 className={classNameImg}
-                                alt="thumbnail"
+                                alt={`Image ${idx}`}
                                 loading="lazy"
                                 width={400}
                                 height={400}

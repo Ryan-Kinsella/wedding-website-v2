@@ -9,8 +9,12 @@ import { addSpotifySuggestionServer } from '../reusable/server-side-api-call/add
 import { SpotifyButton } from '../reusable/spotify-button';
 import { HoverEffect } from '@/components/ui/card-hover-effect';
 import { TypewriterEffectSmooth } from '@/components/ui/typewritter-effect';
-import { fancyFont } from '@/app/page';
-
+import { Great_Vibes } from 'next/font/google';
+const fancyFont = Great_Vibes({
+    subsets: ['latin'],
+    weight: ['400'],
+    variable: '--font-inter',
+});
 
 export const MusicRecommendations = ({
 
@@ -18,7 +22,7 @@ export const MusicRecommendations = ({
     }) => {
     useEffect(() => {
         updateSpotifySuggestionList();
-    }, [])
+    }, []);
 
     const alertDefaultTimeout = 10000;
     const [spotifySuggestions, setSpotifySuggestions] = useState<SpotifySuggestion[] | null>(null);
@@ -27,8 +31,6 @@ export const MusicRecommendations = ({
     const [alertTimeout, setAlertTimeout] = useState(0);
     const [alertText, setAlertText] = useState('');
     const [alertOpen, setAlertOpen] = useState(false);
-
-
 
     const updateSpotifySuggestionList = () => {
         const url = process.env.NEXT_PUBLIC_BACKEND_URL + '/api/spotify-suggestion';
@@ -131,6 +133,7 @@ export const MusicRecommendations = ({
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-center justify-items-stretch">
                 <div className="flex justify-items-center items-center content-center place-content-center rounded-xl overflow-hidden pb-4">
                     <iframe
+                        title='wedding-playlist'
                         src="https://open.spotify.com/embed/playlist/15Ly3H1vr5lq3AQdtlR47V"
                         width="300"
                         height="380"

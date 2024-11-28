@@ -40,7 +40,7 @@ export const AlertCloseTimeout = ({
             };
         }
 
-    }, [timeout, alertOpen]);
+    }, [timeout, alertOpen, onClose]);
 
     return (
         <div className='w-full'>

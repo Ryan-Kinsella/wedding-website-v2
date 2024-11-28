@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
-
-const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
 
 const description = "Get ready to celebrate some love!";
 
 const url = process.env.NODE_ENV === 'production' ?
     `${process.env.WEBPAGE_PROD_URL}` :
     'http://localhost:3000';
+
+//console.log(`running url ${url}`)
 
 export const metadata: Metadata = {
     metadataBase: new URL(url),

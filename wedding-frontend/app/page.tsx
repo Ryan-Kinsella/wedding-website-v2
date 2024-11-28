@@ -2,46 +2,35 @@ import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { Tabs } from "@/components/ui/tabs";
 import "@/components/my-components/reusable/custom-scrollbar.css";
-import csurf from 'csurf'
-
-
-import { // https://tabler.io/icons
-    IconLocation,
-    IconClockHour2,
-    IconBed,
-    IconBrandMcdonalds,
-    IconGift,
-    IconBook,
-    IconCamera,
-    IconMusic,
-    IconCheckbox
-} from "@tabler/icons-react";
-import { TypewriterEffectSmooth } from "@/components/ui/typewritter-effect";
-import { SparklesCore } from "@/components/ui/sparkles";
+// import csurf from 'csurf'
+// import { // https://tabler.io/icons
+//     IconLocation,
+//     IconClockHour2,
+//     IconBed,
+//     IconBrandMcdonalds,
+//     IconGift,
+//     IconBook,
+//     IconCamera,
+//     IconMusic,
+//     IconCheckbox
+// } from "@tabler/icons-react";
 import { ParallaxScroll } from "@/components/ui/parallax-scroll";
 import { LayoutGrid } from "@/components/ui/layout-grid";
 import { CountdownComponent } from "@/components/my-components/reusable/countdown";
-import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import { LampContainer } from "@/components/ui/lamp";
-import { BackgroundBeams } from "@/components/ui/background-beams";
 import { MusicRecommendations } from "@/components/my-components/tabs/music-recommendations";
-import { useRef, useEffect } from "react";
-import { TracingBeam } from "@/components/ui/tracing-beam";
 import { RsvpComponent } from "@/components/my-components/tabs/rsvp";
-import { GetServerSideProps } from "next";
 import { Playfair_Display, Parisienne, Great_Vibes } from 'next/font/google'
-import Link from "next/link";
-import Image from "next/image";
 import { ImagesSlider } from "@/components/ui/image-slider";
 
 
-export const generalFont = Playfair_Display({
+const generalFont = Playfair_Display({
     subsets: ['latin'],
     weight: ['400'],
     variable: '--font-inter',
 })
 
-export const fancyFont = Great_Vibes({
+const fancyFont = Great_Vibes({
     subsets: ['latin'],
     weight: ['400'],
     variable: '--font-inter',
@@ -172,14 +161,14 @@ export default async function Home() {
 
     ];
     const images = [
-        "/images/e1.jpg",
-        "/images/e2.jpg",
-        "/images/e3.jpg",
-        "/images/e4.jpg",
-        "/images/e5.jpg",
-        "/images/e6.jpg",
-        "/images/e7.jpg",
-        "/images/e8.jpg",
+        "/images/e1.JPG",
+        "/images/e2.JPG",
+        "/images/e3.JPG",
+        "/images/e4.JPG",
+        "/images/e5.JPG",
+        "/images/e6.JPG",
+        "/images/e7.JPG",
+        "/images/e8.JPG",
     ];
 
     const imagesSlider = [
