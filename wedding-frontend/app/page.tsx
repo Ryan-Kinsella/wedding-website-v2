@@ -82,7 +82,7 @@ export default async function Home() {
             content:
                 <div className="font-normal text-base text-neutral-200 ">
                     <p className="font-bold text-4xl ">
-                        Stay at a local Inn!
+                        Stay at the Notawassaga Inn!
                     </p>
                     <p className="font-normal text-base text-primary-foreground"></p>
                     <p className="my-4 max-w-lg">
@@ -120,9 +120,7 @@ export default async function Home() {
                         Stay with us!
                     </p>
                     <p className="my-4 max-w-lg text-neutral-200">
-                        A limited number of rooms are available at the bed and breakfast where the wedding and reception will be held.
-                        Please make arrangements early as it is first come first serve.
-                        A complimentary breakfast will be served in the morning.
+                        A limited number of rooms are available at the bed and breakfast where the wedding and reception will be held. If you know which room you&apos;re staying in, please call in and book your room.
                     </p>
                     <a className="underline text-primary hover:text-secondary" href="https://stevensonfarms.com">
                         Stevenson Inn and Spa
@@ -158,6 +156,21 @@ export default async function Home() {
             thumbnail:
                 "/images/stevenson-farms-3.jpg",
         },
+        {
+            id: 4,
+            content:
+                <div className="font-normal text-base text-neutral-200 ">
+                    <p className="font-bold text-4xl">
+                        Stay at a local bed and breakfast / airbnb!
+                    </p>
+                    <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
+                        Whichever you choose, there are many bed and breakfasts in the area to choose from. We have arranged drivers to drive you back to any location for bedtime on Saturday.
+                    </p>
+                </div>,
+            className: "md:col-span-1",
+            thumbnail:
+                "/images/mountain-ash-farm.jpg",
+        },
 
     ];
     const images = [
@@ -178,7 +191,7 @@ export default async function Home() {
 
     ];
 
-    const tabContentClass = "w-full h-[800px] relative rounded-2xl inline-flex flex-col items-center font-bold";
+    const tabContentClass = "w-full h-[800px] max-w-7xl relative rounded-2xl inline-flex flex-col items-center font-bold";
 
     const tabs = [
         {
@@ -194,6 +207,7 @@ export default async function Home() {
             value: "venue",
             content: (
                 <div className={tabContentClass} id="venue">
+
                     <p className="p-4 pt-4 text-2xl md:text-4xl">Venue</p>
                     <a className="p-2 pt-3 text-2xl md:text-3xl underline hover:text-secondary" href="https://stevensonfarms.com" target="_blank">Stevenson Farms</a>
                     <p className="p-2 font-light">5923 County Road 15 Alliston, ON. Canada</p>
@@ -215,11 +229,41 @@ export default async function Home() {
             title: "Time",
             value: "time",
             content: (
-                <div className={tabContentClass}>
-                    <p className="p-4 text-xl md:text-4xl">Time - Rehearsal</p>
-                    <p className="p-4 font-light">Stay tuned!</p>
-                    <p className="p-4 text-xl md:text-4xl">Time - Wedding</p>
-                    <p className="p-4 font-light">Stay tuned!</p>
+                <div className={`${tabContentClass}`}>
+                    <div className="max-w-xl space-y-4 px-2 pt-4">
+                        <p className="text-xl md:text-4xl">Rehearsal</p>
+                        <span className="text-sm text-secondary">Friday | TBD (~3:30pm - 7:00pm)</span>
+                        <p className="font-light"> A ceremony rehersal will take place Friday prior to the dinner with the wedding party. Details to come for those involved.</p>
+                        <p className="text-xl md:text-4xl">Friday Night Dinner</p>
+                        <span className="text-sm text-secondary">Friday | 7:00pm - 10:00pm</span>
+                        <p className="font-light">We&apos;ve booked a floor at our favourite Barrie resturant, The Farmhouse [268 Bradford Street, Barrie, ON, Canada].
+                            We plan to have a casual dinner for those in town the night before.
+                            We would love to get together with those who can attend, but please do not feel pressured.
+                            After this, if you feel inclined and have the energy we can reconvene at the venue and have a bonfire.
+                        </p>
+                        <p className="text-xl md:text-4xl">Wedding Ceremony</p>
+                        <span className="text-sm text-secondary">Saturday | 3:00pm - 430pm</span>
+                        <p className="font-light">
+                            The wedding ceremony will take place at Stevenson Inn and Spa at 3:30pm.
+                            Please arrive at 3:00pm.
+                            We kindly request formal attire.
+                        </p>
+                        <p className="text-xl md:text-4xl">Cocktail Hour</p>
+                        <span className="text-sm text-secondary">Saturday | 4:30pm - 5:30pm</span>
+                        <p className="font-light">
+                            Snacks and refreshments will be served to satiate us until dinner.
+                        </p>
+                        <p className="text-xl md:text-4xl">Dinner and Dancing</p>
+                        <span className="text-sm text-secondary">Saturday | 5:30pm - 2:00am</span>
+                        <p className="font-light">
+                            Dinner, speeches, and a dance party will take place. We can&apos;t wait to celebrate with you!
+                        </p>
+                        <p className="text-xl md:text-4xl">Brunch</p>
+                        <span className="text-sm text-secondary">Sunday | ~ - 11:00am</span>
+                        <p className="font-light">
+                            For those who stayed overnight at the venue, a continental breakfast of coffee, toast, and cereal will be self-served. The venue has provided us a soft deadline to leave at 11:00am.
+                        </p>
+                    </div>
                     {/* <BackgroundBeams /> */}
                 </div>
 
@@ -231,12 +275,17 @@ export default async function Home() {
             content: (
                 <div className={tabContentClass}>
                     <p className="p-4 text-xl md:text-4xl">Accomodations</p>
-                    <p className="p-4 font-light">
-                        We have arranged a few options for accommodations.
-                        Whatever you choose, we are happy to have you celebrate with us!
-                        Please let us know if you have any questions.
-                    </p>
-                    <h1 className="p-4">Click on the options and recommendations below for B&Bs or Hotels:</h1>
+                    <div className="max-w-xl space-y-4 px-2">
+
+                        <p className="p-4 font-light">
+                            We have arranged a few options for accommodations.
+                            Whatever you choose, we are happy to have you celebrate with us!
+                            Please let us know if you have any questions.
+
+                        </p>
+                        <h1 className="p-4">Click on the options and recommendations below for B&Bs or Hotels:</h1>
+
+                    </div>
                     <LayoutGrid cards={sleepingCards} />
                 </div>
             ),
@@ -256,25 +305,31 @@ export default async function Home() {
             content: (
                 <div className={tabContentClass}>
                     <p className="p-4 text-xl md:text-4xl">Gifts</p>
-                    <p className="p-4 font-light">
-                        The only thing we can ask for is for you to celebrate our special day with us!
-                        While we have everything we need, if you feel the need to bring a gift, contributions towards our home fund would be very much appreciated.
+                    <div className="max-w-xl space-y-4 px-2">
 
-                    </p>
+                        <p className="p-4 font-light">
+                            The only thing we can ask for is for you to celebrate our special day with us!
+                            While we have everything we need, if you feel the need to bring a gift, contributions towards our home fund would be very much appreciated.
+
+                        </p>
+                    </div>
                     {/* <BackgroundBeams /> */}
                 </div>
             ),
         },
-        {
-            title: "Our Story",
-            value: "our-story",
-            content: (
-                <div className={tabContentClass}>
-                    <p className="p-4 text-xl md:text-4xl">Our Story</p>
-                    <p className="p-4 font-light">Stay tuned!</p>
-                </div>
-            ),
-        },
+        // {
+        //     title: "Our Story",
+        //     value: "our-story",
+        //     content: (
+        //         <div className={tabContentClass}>
+        //             <p className="p-4 text-xl md:text-4xl">Our Story</p>
+        //             <div className="max-w-xl space-y-4 px-2">
+
+        //                 <p className="p-4 font-light">Stay tuned!</p>
+        //             </div>
+        //         </div>
+        //     ),
+        // },
         {
             title: "Photos",
             value: "photos",

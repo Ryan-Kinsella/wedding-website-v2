@@ -42,7 +42,7 @@ export const CountdownComponent = ({
 
     const mainDiv = "relative flex items-center justify-center transform hover:scale-125 transition-transform duration-300"
     const divBackground = "absolute inset-0 bg-gradient-to-br from-primary to-primary-foreground opacity-50 blur"
-    const spanClassName = "relative z-10 text-xs"
+    const spanClassName = "relative z-10 text-lg"
     // md:text-sm
     // md:gap-x-20
     return (
@@ -51,7 +51,7 @@ export const CountdownComponent = ({
                 September 27th, 2025
             </div>
             <div className="grid grid-rows-2 grid-cols-6 gap-x-12 gap-y-4 w-full mx-auto pt-10
-          font-semibold select-none text-muted-foreground " id="countdownBody">
+          font-semibold select-none" id="countdownBody">
 
                 <div className={mainDiv}>
                     <div className={divBackground}></div>

@@ -3,7 +3,10 @@ import { NextRequest, NextResponse } from "next/server";
 
 const headers = {
     'Content-Type': 'application/json',
+    'Cache-Control': 'no-store, max-age=0' // Add this
 };
+
+export const dynamic = 'force-dynamic'
 
 function calculateTimeRemaining(): Countdown {
     const currentDate = new Date();
@@ -37,4 +40,3 @@ export async function GET(req: NextRequest) {
         }
     }
 }
-
